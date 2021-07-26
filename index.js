@@ -96,57 +96,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
     console.log(movesList.length)
 
-
-    // do {
-    //   console.log("before move")
-    //   console.log(movesList)
-    //   console.log(movesUl)
-
-
-    //   moveLi = movesList[0]
-
-    //   direction = moveLi.className.toString()
-
-    //   move(direction)
-
-    //   moveLi.remove()
-  
-
-    //   console.log("after move")
-    //   console.log(movesList)
-    //   console.log(movesUl)
-      
-
-      
-      
-    // } while (movesList.length != 0); 
-      
-
-      
-      
-    
-    // movesList.forEach(
-    //   moveLi => {
-    //     direction = moveLi.className.toString()
-        
-
-    //     move(direction)
-        
-       
-
-    //     // movesList.shift
-
-    //     // movesUl.removeChild(moveLi)
-
-          
-    // });
-
-
   })
-  
 
+  // delete a move
 
-    
+  movesUl.addEventListener('click', event => {
+    console.log(`${event.target.closest('li')} was clicked`)
+
+    if(event.target.matches('li')){
+      let move = event.target.closest('li')
+      move.remove()
+    }
+  })
+
   
 });
 
