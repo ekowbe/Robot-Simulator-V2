@@ -1,4 +1,12 @@
 id = 0
+
+function sleep(time) {
+  const start = new Date()
+  while (new Date() - start < time * 1000) {
+      // do nothing & block the main thread 
+  }
+}
+
 function create_li() {
   id ++
   const nextMoveLi = document.createElement('li')
@@ -62,28 +70,28 @@ document.addEventListener("DOMContentLoaded", function() {
     console.log("let's make moves")
 
     for (let moveLiIndex = 0; moveLiIndex < movesList.length; moveLiIndex++) {
-      
-      console.log(`current li: ${moveLiIndex}`)
-      
-      // find the first child of movesUl and get it's data id
-      let nextLiId = movesUl.firstElementChild.dataset.id
-      console.log(nextLiId)
-      let moveLi = movesUl.querySelector(`li[data-id='${nextLiId}']`);
+      setTimeout(function(){
+        console.log(`current li: ${moveLiIndex}`)
+        
+        // find the first child of movesUl and get it's data id
+        let nextLiId = movesUl.firstElementChild.dataset.id
 
-      console.log(moveLi)
+        let moveLi = movesUl.querySelector(`li[data-id='${nextLiId}']`);
 
-      let direction = moveLi.className
-    
+        console.log(moveLi)
 
-      move(direction)
-      console.log(`moved ${direction}`)
-
-
-      moveLi.remove()
+        let direction = moveLi.className
       
 
+        move(direction)
+        console.log(`moved ${direction}`)
 
-      
+
+        moveLi.remove()
+
+
+        //pause for a few seconds
+      }, 500)
     }
 
     console.log(movesList.length)
