@@ -69,31 +69,24 @@ document.addEventListener("DOMContentLoaded", function() {
     // make each move
     console.log("let's make moves")
 
+    // to create illusion of synchronousity, create a duration variable
+    let duration = 0
+    let durationIncrementer = 500
     for (let moveLiIndex = 0; moveLiIndex < movesList.length; moveLiIndex++) {
+      duration += durationIncrementer
       setTimeout(function(){
-        console.log(`current li: ${moveLiIndex}`)
-        
+        //console.log(`current li: ${moveLiIndex}`)
         // find the first child of movesUl and get it's data id
         let nextLiId = movesUl.firstElementChild.dataset.id
-
         let moveLi = movesUl.querySelector(`li[data-id='${nextLiId}']`);
-
-        console.log(moveLi)
-
+        //console.log(moveLi)
         let direction = moveLi.className
-      
-
         move(direction)
-        console.log(`moved ${direction}`)
-
-
+        //console.log(`moved ${direction}`)
         moveLi.remove()
-
-
         //pause for a few seconds
-      }, 500)
+      }, duration)
     }
-
     console.log(movesList.length)
 
   })
